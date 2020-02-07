@@ -57,8 +57,27 @@ class lista
         }
     };
 
-    void eliminar(nodo* seleccionado)
-    {
+    void eliminar(nodo* seleccionado){
+        if (seleccionado == nullptr){
+            cout<< "No se puede eliminar un nodo inexistente"<<endl;
+        } else {
+            fin = seleccionado;
+            fin->siguiente = 0;
+            nodo* aux = inicio;
+            size = 1;
+            while (aux != fin){
+                size++;
+                aux = aux->siguiente;
+            }
+        }
+
+        
+        
+    };
+
+
+    void eliminarUnNodo(nodo* seleccionado)
+    {        
         nodo* aux1;
         aux1 = inicio;
         bool nolisto = true;
@@ -101,19 +120,21 @@ class lista
     {
         nodo* obs = inicio;
         bool encontrado = false;
-
-        while (obs != 0)
+        int su = 0;
+        while (su < size)
         {
+            //cout << obs->nombre << endl;
             if (obs->id == n){
                 encontrado = true;
                 cout << "se encontro "; cout<< obs->nombre; cout<< obs->id <<endl;
                 return obs;
             } else {
                 obs = obs->siguiente;
+                su++;
             }
         }
-
         cout << "No se encontro nada "<< endl;
+        obs = nullptr;
         return obs;
 
     };
